@@ -57,4 +57,16 @@ const RESTAURANT = {
     });
   });
 
+  app.get('/:foodId', (req, res) => {
+    const index = req.params.foodId;
+    res.render('menu.ejs', {
+      food: RESTAURANT[index]
+    });
+  });
+
+  app.get('/menu/:category', (req, res) => {
+    menuItems = req.params.category
+    res.render('category.ejs')
+  })
+
 app.listen(3000);
