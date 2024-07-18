@@ -65,8 +65,13 @@ const RESTAURANT = {
   });
 
   app.get('/menu/:category', (req, res) => {
-    menuItems = req.params.category
-    res.render('category.ejs')
+    const category = req.params.category
+    const menuItems = RESTAURANT.menu.filter(item => item.category === category)
+    res.render('category.ejs', {
+      restaurant: RESTAURANT,
+      category: category,
+      menuItems: menuItems
+    } )
   })
 
 app.listen(3000);
